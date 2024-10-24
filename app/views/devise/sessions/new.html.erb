@@ -1,0 +1,37 @@
+<h2 class="text-3xl font-semibold text-center mb-8">Log in</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<span class="class: 'mb-4 text-red-600'"><%= f.error_notification  %></span>
+  
+
+  <div class="space-y-4 lg:w-1/2 lg:mx-auto">
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: {
+                  class: 'w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500',
+                  placeholder: "Email",
+                  autocomplete: "email"
+                } %>
+
+    <%= f.input :password,
+                required: true,
+                input_html: {
+                  class: 'w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500',
+                  placeholder: "Password",
+                  autocomplete: "current-password"
+                } %>
+
+    <% if devise_mapping.rememberable? %>
+      <%= f.input :remember_me, as: :boolean, label: "Remember me", input_html: { class: 'mr-2' } %>
+    <% end %>
+  </div>
+
+  <div class="mt-6 lg:w-1/2 lg:mx-auto">
+    <%= f.button :submit, "Log in", class: 'w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out' %>
+  </div>
+<% end %>
+
+<div class="mt-4 text-center">
+  <%= render "devise/shared/links", class: 'text-blue-600 hover:underline transition duration-200 ease-in-out' %>
+</div>

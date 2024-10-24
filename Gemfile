@@ -57,3 +57,11 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "devise", "~> 4.9"
+
+gem "image_processing", "~> 1.13"
+
+gem "simple_form", "~> 5.3"
+
+gem "acts_as_votable", "~> 0.14.0"
