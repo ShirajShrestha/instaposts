@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title><%= content_for(:title) || "Instapost" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,100 +16,97 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application.tailwind", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <%
 =begin%>
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/ideas">Ideas</a>
-      </li>              
+        <li class="nav-item active">
+            <a class="nav-link" href="/ideas">Ideas</a>
+        </li>
     </ul>
- <p class="navbar-text float-right">
+    <p class="navbar-text float-right">
         <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.email %></strong>.
-          <%= link_to "Edit profile", edit_user_registration_path, class: "navbar-link" %> |
-          <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "navbar-link"  %>
+        Logged in as <strong><%= current_user.email %></strong>.
+        <%= link_to "Edit profile", edit_user_registration_path, class: "navbar-link" %> |
+        <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "navbar-link"  %>
         <% else %>
-          <%= link_to "Sign up", new_user_registration_path, class: "navbar-link"  %> |
-          <%= link_to "Login", new_user_session_path, class: "navbar-link"  %>
+        <%= link_to "Sign up", new_user_registration_path, class: "navbar-link"  %> |
+        <%= link_to "Login", new_user_session_path, class: "navbar-link"  %>
         <% end %>
-    </p> 
-<%
+    </p>
+    <%
 =end%>
-<nav class="bg-white border-b border-gray-200 shadow-sm font-sans sticky top-0 z-50"> <!-- Applied clean sans-serif font -->
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <!-- Logo Section -->
-    <a href="/" class="flex items-center space-x-3">
-      <span class="self-center text-2xl font-pacifico tracking-wider text-[#337ab7]">InstaPost</span> <!-- Slightly improved tracking and font size -->
-    </a>
+    <nav class="bg-white border-b border-gray-200 shadow-sm font-sans sticky top-0 z-50">
+        <!-- Applied clean sans-serif font -->
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <!-- Logo Section -->
+            <a href="/" class="flex items-center space-x-3">
+                <span class="self-center text-2xl font-pacifico tracking-wider text-[#337ab7]">InstaPost</span> <!-- Slightly improved tracking and font size -->
+            </a>
 
-    <!-- Mobile Menu Button -->
-    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none transition ease-in-out duration-300" aria-controls="navbar-default" aria-expanded="false">
-      <span class="sr-only">Open main menu</span>
-      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
-      </svg>
-    </button>
+            <!-- Mobile Menu Button -->
+            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none transition ease-in-out duration-300" aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
 
-    <!-- Navbar Links -->
-    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-      <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 bg-gray-50 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:bg-white items-center">
-        <% if current_user %>
-          <!-- New Post Link -->
-          <li>
-            <%= link_to 'New Post', new_post_path, class: "text-white bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-full shadow-md transition ease-in-out duration-300" %> <!-- Button with shadow -->
-          </li>
+            <!-- Navbar Links -->
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 bg-gray-50 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:bg-white items-center">
+                    <% if current_user %>
+                    <!-- New Post Link -->
+                    <li>
+                        <%= link_to 'New Post', new_post_path, class: "text-white bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-full shadow-md transition ease-in-out duration-300" %>
+                        <!-- Button with shadow -->
+                    </li>
 
-          <!-- Log Out Link -->
-          <li>
-            <%= link_to 'Log Out', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "text-white bg-red-600 hover:bg-red-700 py-2 px-4 rounded-full shadow-md transition ease-in-out duration-300" %> <!-- Red for logout for contrast -->
-          </li>
+                    <!-- Log Out Link -->
+                    <li>
+                        <%= link_to 'Log Out', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "text-white bg-red-600 hover:bg-red-700 py-2 px-4 rounded-full shadow-md transition ease-in-out duration-300" %>
+                        <!-- Red for logout for contrast -->
+                    </li>
 
-          <!-- User Avatar -->
-          <li>
-            <div class="w-10 h-10 rounded-full bg-gray-300 text-white flex items-center justify-center font-bold shadow-md">
-              <%= current_user.email.split('@').first[0].capitalize %> <!-- Avatar style improved -->
+                    <!-- User Avatar -->
+                    <li>
+                        <div class="w-10 h-10 rounded-full bg-gray-300 text-white flex items-center justify-center font-bold shadow-md">
+                            <%= current_user.email.split('@').first[0].capitalize %>
+                            <!-- Avatar style improved -->
+                        </div>
+                    </li>
+
+                    <% else %>
+                    <!-- Sign Up & Log In Links -->
+                    <li>
+                        <%= link_to 'Sign Up', user_session_path, class: "text-gray-900 hover:text-blue-600 py-2 px-3 transition ease-in-out duration-300" %>
+                    </li>
+                    <li>
+                        <%= link_to 'Log In', new_user_session_path, class: "text-gray-900 hover:text-blue-600 py-2 px-3 transition ease-in-out duration-300" %>
+                    </li>
+                    <% end %>
+                </ul>
             </div>
-          </li>
-
-        <% else %>
-          <!-- Sign Up & Log In Links -->
-          <li>
-            <%= link_to 'Sign Up', user_session_path, class: "text-gray-900 hover:text-blue-600 py-2 px-3 transition ease-in-out duration-300" %>
-          </li>
-          <li>
-            <%= link_to 'Log In', new_user_session_path, class: "text-gray-900 hover:text-blue-600 py-2 px-3 transition ease-in-out duration-300" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</nav>
+        </div>
+    </nav>
 
 
     <% if notice %>
-      <div id="flash-notice" 
-          class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" 
-          data-controller="flash" 
-          data-flash-timeout="3000" 
-          role="alert">
+    <div id="flash-notice" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" data-controller="flash" data-flash-timeout="3000" role="alert">
         <span class="block sm:inline"><%= notice %></span>
-      </div>
+    </div>
     <% end %>
     <% if alert %>
-      <div id="flash-alert" 
-          class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" 
-          data-controller="flash" 
-          data-flash-timeout="3000" 
-          role="alert">
+    <div id="flash-alert" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" data-controller="flash" data-flash-timeout="3000" role="alert">
         <span class="block sm:inline"><%= alert %></span>
-      </div>
+    </div>
     <% end %>
     <%= yield %>
-  </body>
+</body>
+
 </html>
