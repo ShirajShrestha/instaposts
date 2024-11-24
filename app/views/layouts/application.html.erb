@@ -22,25 +22,6 @@
 </head>
 
 <body>
-    <%
-=begin%>
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="/ideas">Ideas</a>
-        </li>
-    </ul>
-    <p class="navbar-text float-right">
-        <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to "Edit profile", edit_user_registration_path, class: "navbar-link" %> |
-        <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "navbar-link"  %>
-        <% else %>
-        <%= link_to "Sign up", new_user_registration_path, class: "navbar-link"  %> |
-        <%= link_to "Login", new_user_session_path, class: "navbar-link"  %>
-        <% end %>
-    </p>
-    <%
-=end%>
     <nav class="bg-white border-b border-gray-200 shadow-sm font-sans sticky top-0 z-50">
         <!-- Applied clean sans-serif font -->
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -84,7 +65,7 @@
                     <% else %>
                     <!-- Sign Up & Log In Links -->
                     <li>
-                        <%= link_to 'Sign Up', user_session_path, class: "text-gray-900 hover:text-blue-600 py-2 px-3 transition ease-in-out duration-300" %>
+                        <%= link_to 'Sign Up', new_user_registration_path, class: "text-gray-900 hover:text-blue-600 py-2 px-3 transition ease-in-out duration-300" %>
                     </li>
                     <li>
                         <%= link_to 'Log In', new_user_session_path, class: "text-gray-900 hover:text-blue-600 py-2 px-3 transition ease-in-out duration-300" %>
