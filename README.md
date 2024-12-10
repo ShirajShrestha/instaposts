@@ -1,24 +1,41 @@
-# README
+# Instapost
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+With Instapost, you can share your life’s adventures, passions, and everyday moments with friends and followers. From breathtaking landscapes to delicious meals, capture it all and let your creativity shine. Discover a world of inspiration, connect with like-minded people, and build a community around your shared interests.
 
-Things you may want to cover:
+![Instapost ](./public/readme_img/instapost_home.gif)
 
-* Ruby version
+## Features
 
-* System dependencies
+- Users are able to login and out of their account.
+- Users can create a post.
+- Users can like and comment to others post
 
-* Configuration
+## Usage
 
-* Database creation
+You can download the zip file to use the project or you can clone this repo:
 
-* Database initialization
+```bash
+https://github.com/ShirajShrestha/instaposts.git
+```
 
-* How to run the test suite
+Navigate to the folder using:
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+cd instaposts
+```
 
-* Deployment instructions
+Install all the dependencies using following command:
 
-* ...
+```bash
+bundle install
+```
+
+Run the project using
+
+```bash
+rails server
+```
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/ShirajShrestha/instaposts
